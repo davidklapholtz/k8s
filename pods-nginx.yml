@@ -8,13 +8,16 @@ spec:
       image: supergiantkir/animals:bear
       ports:
         - containerPort: 80
+      volumeMounts:
+       - name: app-storage  # name must match the volume name defined in volumes
+         mountPath: /storgae  # mount path within the container
     - name: app2
       image: yanivomc/spring-music:latest
       ports:
         - containerPort: 8080
       volumeMounts:
        - name: app-storage  # name must match the volume name defined in volumes
-         mountPath: /tmp/files  # mount path within the container
+         mountPath: /storgae  # mount path within the container
   volumes:
     - name:  app-storage # Volume name
       emptyDir: {} # Volume type
