@@ -4,17 +4,17 @@ metadata:
   name: nginx
 spec:
   containers:
-    - name: nginx
-      image: nginx:1.7.9
+    - name: app1
+      image: supergiantkir/animals:bear
       ports:
         - containerPort: 80
-    - name: springapp
+    - name: app2
       image: yanivomc/spring-music:latest
       ports:
         - containerPort: 8080
       volumeMounts:
-       - name: redis-persistent-storage  # name must match the volume name defined in volumes
-         mountPath: /data/redis # mount path within the container
+       - name: app-storage  # name must match the volume name defined in volumes
+         mountPath: /tmp/files  # mount path within the container
   volumes:
-    - name: redis-persistent-storage # Volume name
+    - name:  app-storage # Volume name
       emptyDir: {} # Volume type
